@@ -1,0 +1,16 @@
+{
+  "name": "redis-argument-parser",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint index.js && nodeunit test"
+  },
+  "author": "Evan Solomon",
+  "license": "MIT",
+  "devDependencies": {
+    "js-yaml": "^3.2.7",
+    "jshint": "^2.7.0",
+    "nodeunit": "^0.9.1"
+  }
+}

@@ -1,0 +1,572 @@
+append key val: [key, string]
+
+auth pass: [string]
+
+bgrewriteaof: []
+
+bgsave: []
+
+bitcount key: [key]
+bitcount key 10 20: [key, integer, integer]
+
+bitop add dest key1: [string, key, key]
+bitop add dest key1 key2 key3: [string, key, key, key, key]
+
+bitpos key 0: [key, integer]
+bitpos key 0 10: [key, integer, integer]
+bitpos key 0 10 20: [key, integer, integer, integer]
+
+blpop list1 0: [key, integer]
+blpop list1 list2 0: [key, key, integer]
+blpop list1 list2 list3 0: [key, key, key, integer]
+
+brpop list1 0: [key, integer]
+brpop list1 list2 0: [key, key, integer]
+brpop list1 list2 list3 0: [key, key, key, integer]
+
+brpoplpush source dest 10: [key, key, integer]
+
+client-kill: []
+client-kill 127: [string]
+client-kill 127 id 10: [string, keyword, integer]
+client-kill 127 id 10 type slave: [string, keyword, integer, keyword, enum]
+client-kill 127 id 10 type normal addr a: [string, keyword, integer, keyword, enum, keyword, string]
+client-kill 127 id 10 type normal addr a skipme no: [string, keyword, integer, keyword, enum, keyword, string, keyword, string]
+client-kill id 10: [keyword, integer]
+client-kill id 10 type slave: [keyword, integer, keyword, enum]
+client-kill id 10 type normal addr a: [keyword, integer, keyword, enum, keyword, string]
+client-kill id 10 type normal addr a skipme no: [keyword, integer, keyword, enum, keyword, string, keyword, string]
+
+client-list: []
+
+client-getname: []
+
+client-pause: []
+
+client-setname: []
+
+cluster-addslots: []
+cluster-addslots 1: [integer]
+cluster-addslots 1 2 3: [integer, integer, integer]
+
+cluster-count-failure-reports: []
+
+cluster-countkeysinslot: []
+
+cluster-delslots 1: [integer]
+cluster-delslots 1 2 3: [integer, integer, integer]
+
+cluster-failover: []
+cluster-failover force: [enum]
+cluster-failover takeover: [enum]
+
+cluster-forget id: [string]
+
+cluster-getkeysinslot 1 10: [integer, integer]
+
+cluster-info: []
+
+cluster-keyslot k1: [string]
+
+cluster-meet 127.0.0.1 5000: [string, integer]
+
+cluster-nodes: []
+
+cluster-replicate id: [string]
+
+cluster-reset: []
+cluster-reset hard: [enum]
+cluster-reset soft: [enum]
+
+cluster-saveconfig: []
+
+cluster-set-config-epoch 1000: [integer]
+
+cluster-setslot 1 importing: [integer, enum]
+cluster-setslot 1 migrating id: [integer, enum, string]
+
+cluster-slaves id: [string]
+
+cluster-slots: []
+
+command: []
+
+command-count: []
+
+command-getkeys: []
+
+command-info a: [string]
+command-info a b c: [string, string, string]
+
+config-get param: [string]
+
+config-rewrite: []
+
+config-set param val: [string, string]
+
+config-resetstat: []
+
+dbsize: []
+
+debug-object k: [key]
+
+debug-segfault: []
+
+decr key: [key]
+
+decrby key 10: [key, integer]
+
+del key1: [key]
+del key1 key2 key3: [key, key, key]
+
+discard: []
+
+dump key: [key]
+
+echo something: [string]
+
+eval fakescriptthing 1 key1 first: [string, integer, key, string]
+eval fakescriptthing 1 key1 first second: [string, integer, key, string, string]
+eval fakescriptthing 2 key1 key2 first: [string, integer, key, key, string]
+eval fakescriptthing 2 key1 key2 first second: [string, integer, key, key, string, string]
+
+evalsha scriptsha 1 key1 first: [string, integer, key, string]
+evalsha scriptsha 1 key1 first second: [string, integer, key, string, string]
+evalsha scriptsha 2 key1 key2 first: [string, integer, key, key, string]
+evalsha scriptsha 2 key1 key2 first second: [string, integer, key, key, string, string]
+
+exec: []
+
+expire key 100: [key, integer]
+
+expireat key 1000: [key, posix time]
+
+flushdb: []
+
+get key: [key]
+
+getbit key 10: [key, integer]
+
+getrange key 10 20: [key, integer, integer]
+
+getset key val: [key, string]
+
+hdel hkey k1: [key, string]
+hdel hkey k1 k2 k3: [key, string, string, string]
+
+hexists hkey k1: [key, string]
+
+hget hkey k1: [key, string]
+
+hgetall hkey: [key]
+
+hincrby hkey k1 10: [key, string, integer]
+
+hincrbyfloat hkey k1 10: [key, string, double]
+
+hkeys hkey: [key]
+
+hlen hkey: [key]
+
+hmget hkey k1: [key, string]
+hmget hkey k1 k2 k3: [key, string, string, string]
+
+hmset hkey k1 v1: [key, string, string]
+hmset hkey k1 v1 k2 v2 k3 v3: [key, string, string, string, string, string, string]
+
+hsetnx hkey k1 v1: [key, string, string]
+
+hstrlen hkey k1: [key, string]
+
+hvals hkey: [key]
+
+incr key: [key]
+
+incrby key 10: [key, integer]
+
+incrbyfloat key 10: [key, double]
+
+info: []
+info section: [string]
+
+keys patt: [pattern]
+
+lastsave: []
+
+lindex k 0: [key, integer]
+
+linsert key before world there: [key, enum, string, string]
+linsert key after world there: [key, enum, string, string]
+
+llen k: [key]
+
+lpop k: [key]
+
+lpush k v1: [key, string]
+lpush k v1 v2 v3: [key, string, string, string]
+
+lpushx k v: [key, string]
+
+lrange k 0 10: [key, integer, integer]
+
+lrem k 5 a: [key, integer, string]
+
+lset k 5 a: [key, integer, string]
+
+ltrim k 0 4: [key, integer, integer]
+
+mget a: [key]
+mget a b c: [key, key, key]
+
+migrate host 5000 k 2 1000: [string, string, key, integer, integer]
+migrate host 5000 k 2 1000 copy: [string, string, key, integer, integer, enum]
+migrate host 5000 k 2 1000 replace: [string, string, key, integer, integer, enum]
+migrate host 5000 k 2 1000 copy replace: [string, string, key, integer, integer, enum, enum]
+
+monitor: []
+
+move a 1: [key, integer]
+
+mset k v: [key, string]
+mset k v k2 v2 k3 v3: [key, string, key, string, key, string]
+
+msetnx k v: [key, string]
+msetnx k v k2 v2 k3 v3: [key, string, key, string, key, string]
+
+multi: []
+
+object encoding: [string]
+object encoding a: [string, string]
+object encoding a b c: [string, string, string, string]
+
+persist k: [key]
+
+pexpire k 1000: [key, integer]
+
+pexpireat k 10000: [key, posix time]
+
+pfadd k thing: [key, string]
+pfadd k thing thing2 thing3: [key, string, string, string]
+
+pfcount k: [key]
+pfcount k k2 k3: [key, key, key]
+
+pfmerge dest k: [key, key]
+pfmerge dest k k2 k3: [key, key, key, key]
+
+ping: []
+
+psetex k 100 a: [key, integer, string]
+
+psubscribe patt: [pattern]
+psubscribe patt patt2 patt2: [pattern, pattern, pattern]
+
+pubsub subcommand: [string]
+pubsub subcommand a: [string, string]
+pubsub subcommand a b c: [string, string, string, string]
+
+pttl k: [key]
+
+publish chan msg: [string, string]
+
+punsubscribe: []
+punsubscribe patt: [pattern]
+punsubscribe patt1 patt2: [pattern, pattern]
+
+quit: []
+
+randomkey: []
+
+rename old new: [key, key]
+
+renamenx old new: [key, key]
+
+restore k 100 \n\x17\x17: [key, integer, string]
+restore k 100 \n\x17\x17 replace: [key, integer, string, enum]
+
+role: []
+
+rpop k: [key]
+
+rpoplpush source dest: [key, key]
+
+rpush k v1: [key, string]
+rpush k v1 v2 v3: [key, string, string, string]
+
+rpushx k v1: [key, string]
+
+sadd k v1: [key, string]
+sadd k v1 v2 v3: [key, string, string, string]
+
+save: []
+
+scard k: [key]
+
+sdiff k: [key]
+sdiff k1 k2 k3: [key, key, key]
+
+sdiffstore dest k1: [key, key]
+sdiffstore dest k1 k2 k3: [key, key, key, key]
+
+select 1: [integer]
+
+set k v: [key, string]
+set k v nx: [key, string, enum]
+set k v xx: [key, string, enum]
+set k v ex 10: [key, string, keyword, integer]
+set k v ex 10 nx: [key, string, keyword, integer, enum]
+set k v ex 10 xx: [key, string, keyword, integer, enum]
+set k v px 10000: [key, string, keyword, integer]
+set k v px 10000 nx: [key, string, keyword, integer, enum]
+set k v px 10000 xx: [key, string, keyword, integer, enum]
+
+setbit k v 10: [key, integer, string]
+
+setex k 100 v: [key, integer, string]
+
+setnx k v: [key, string]
+
+setrange k 10 v: [key, integer, string]
+
+shutdown: []
+shutdown nosave: [enum]
+shutdown save: [enum]
+
+sinter k: [key]
+sinter k1 k2 k3: [key, key, key]
+
+sinterstore dest k: [key, key]
+sinterstore dest k1 k2 k3: [key, key, key, key]
+
+sismember k v: [key, string]
+
+slaveof hostname 6379: [string, string]
+
+slowlog subcommand: [string]
+slowlog subcommand a: [string, string]
+
+smembers k: [key]
+
+smove k1 k2 item: [key, key, string]
+
+# The variety of ways you can tell Redis to sort a list are plentiful
+sort key: [key]
+sort key by patt_*: [key, keyword, pattern]
+sort key by patt_* limit 0 10: [key, keyword, pattern, keyword, integer, integer]
+sort key by patt_* limit 0 10 get item_*: [key, keyword, pattern, keyword, integer, integer, keyword, string]
+sort key by patt_* limit 0 10 get item_* asc: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum]
+sort key by patt_* limit 0 10 get item_* asc alpha: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, enum]
+sort key by patt_* limit 0 10 get item_* asc alpha store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, enum, keyword, key]
+sort key by patt_* limit 0 10 get item_* asc store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key by patt_* limit 0 10 get item_* desc: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum]
+sort key by patt_* limit 0 10 get item_* desc alpha: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, enum]
+sort key by patt_* limit 0 10 get item_* desc alpha store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, enum, keyword, key]
+sort key by patt_* limit 0 10 get item_* desc store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key by patt_* limit 0 10 get item_* alpha: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum]
+sort key by patt_* limit 0 10 get item_* alpha store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key by patt_* limit 0 10 get item_* store dest: [key, keyword, pattern, keyword, integer, integer, keyword, string, keyword, key]
+sort key by patt_* limit 0 10 asc: [key, keyword, pattern, keyword, integer, integer, enum]
+sort key by patt_* limit 0 10 asc alpha: [key, keyword, pattern, keyword, integer, integer, enum, enum]
+sort key by patt_* limit 0 10 asc alpha store dest: [key, keyword, pattern, keyword, integer, integer, enum, enum, keyword, key]
+sort key by patt_* limit 0 10 asc store dest: [key, keyword, pattern, keyword, integer, integer, enum, keyword, key]
+sort key by patt_* limit 0 10 desc: [key, keyword, pattern, keyword, integer, integer, enum]
+sort key by patt_* limit 0 10 desc alpha: [key, keyword, pattern, keyword, integer, integer, enum, enum]
+sort key by patt_* limit 0 10 desc alpha store dest: [key, keyword, pattern, keyword, integer, integer, enum, enum, keyword, key]
+sort key by patt_* limit 0 10 desc store dest: [key, keyword, pattern, keyword, integer, integer, enum, keyword, key]
+sort key by patt_* limit 0 10 alpha: [key, keyword, pattern, keyword, integer, integer, enum]
+sort key by patt_* limit 0 10 alpha store dest: [key, keyword, pattern, keyword, integer, integer, enum, keyword, key]
+sort key by patt_* limit 0 10 store dest: [key, keyword, pattern, keyword, integer, integer, keyword, key]
+sort key by patt_* get item_*: [key, keyword, pattern, keyword, string]
+sort key by patt_* get item_* asc: [key, keyword, pattern, keyword, string, enum]
+sort key by patt_* get item_* asc alpha: [key, keyword, pattern, keyword, string, enum, enum]
+sort key by patt_* get item_* asc alpha store dest: [key, keyword, pattern, keyword, string, enum, enum, keyword, key]
+sort key by patt_* get item_* asc store dest: [key, keyword, pattern, keyword, string, enum, keyword, key]
+sort key by patt_* get item_* desc: [key, keyword, pattern, keyword, string, enum]
+sort key by patt_* get item_* desc alpha: [key, keyword, pattern, keyword, string, enum, enum]
+sort key by patt_* get item_* desc alpha store dest: [key, keyword, pattern, keyword, string, enum, enum, keyword, key]
+sort key by patt_* get item_* desc store dest: [key, keyword, pattern, keyword, string, enum, keyword, key]
+sort key by patt_* get item_* alpha: [key, keyword, pattern, keyword, string, enum]
+sort key by patt_* get item_* alpha store dest: [key, keyword, pattern, keyword, string, enum, keyword, key]
+sort key by patt_* get item_* store dest: [key, keyword, pattern, keyword, string, keyword, key]
+sort key by patt_* asc: [key, keyword, pattern, enum]
+sort key by patt_* asc alpha: [key, keyword, pattern, enum, enum]
+sort key by patt_* asc alpha store dest: [key, keyword, pattern, enum, enum, keyword, key]
+sort key by patt_* asc store dest: [key, keyword, pattern, enum, keyword, key]
+sort key by patt_* desc: [key, keyword, pattern, enum]
+sort key by patt_* desc alpha: [key, keyword, pattern, enum, enum]
+sort key by patt_* desc alpha store dest: [key, keyword, pattern, enum, enum, keyword, key]
+sort key by patt_* desc store dest: [key, keyword, pattern, enum, keyword, key]
+sort key by patt_* alpha: [key, keyword, pattern, enum]
+sort key by patt_* alpha store dest: [key, keyword, pattern, enum, keyword, key]
+sort key by patt_* store dest: [key, keyword, pattern, keyword, key]
+sort key limit 0 10: [key, keyword, integer, integer]
+sort key limit 0 10 get item_*: [key, keyword, integer, integer, keyword, string]
+sort key limit 0 10 get item_* asc: [key, keyword, integer, integer, keyword, string, enum]
+sort key limit 0 10 get item_* asc alpha: [key, keyword, integer, integer, keyword, string, enum, enum]
+sort key limit 0 10 get item_* asc alpha store dest: [key, keyword, integer, integer, keyword, string, enum, enum, keyword, key]
+sort key limit 0 10 get item_* asc store dest: [key, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key limit 0 10 get item_* desc: [key, keyword, integer, integer, keyword, string, enum]
+sort key limit 0 10 get item_* desc alpha: [key, keyword, integer, integer, keyword, string, enum, enum]
+sort key limit 0 10 get item_* desc alpha store dest: [key, keyword, integer, integer, keyword, string, enum, enum, keyword, key]
+sort key limit 0 10 get item_* desc store dest: [key, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key limit 0 10 get item_* alpha: [key, keyword, integer, integer, keyword, string, enum]
+sort key limit 0 10 get item_* alpha store dest: [key, keyword, integer, integer, keyword, string, enum, keyword, key]
+sort key limit 0 10 get item_* store dest: [key, keyword, integer, integer, keyword, string, keyword, key]
+sort key limit 0 10 asc: [key, keyword, integer, integer, enum]
+sort key limit 0 10 asc alpha: [key, keyword, integer, integer, enum, enum]
+sort key limit 0 10 asc alpha store dest: [key, keyword, integer, integer, enum, enum, keyword, key]
+sort key limit 0 10 asc store dest: [key, keyword, integer, integer, enum, keyword, key]
+sort key limit 0 10 desc: [key, keyword, integer, integer, enum]
+sort key limit 0 10 desc alpha: [key, keyword, integer, integer, enum, enum]
+sort key limit 0 10 desc alpha store dest: [key, keyword, integer, integer, enum, enum, keyword, key]
+sort key limit 0 10 desc store dest: [key, keyword, integer, integer, enum, keyword, key]
+sort key limit 0 10 alpha: [key, keyword, integer, integer, enum]
+sort key limit 0 10 alpha store dest: [key, keyword, integer, integer, enum, keyword, key]
+sort key limit 0 10 store dest: [key, keyword, integer, integer, keyword, key]
+sort key get item_*: [key, keyword, string]
+sort key get item_* asc: [key, keyword, string, enum]
+sort key get item_* asc alpha: [key, keyword, string, enum, enum]
+sort key get item_* asc alpha store dest: [key, keyword, string, enum, enum, keyword, key]
+sort key get item_* asc store dest: [key, keyword, string, enum, keyword, key]
+sort key get item_* desc: [key, keyword, string, enum]
+sort key get item_* desc alpha: [key, keyword, string, enum, enum]
+sort key get item_* desc alpha store dest: [key, keyword, string, enum, enum, keyword, key]
+sort key get item_* desc store dest: [key, keyword, string, enum, keyword, key]
+sort key get item_* alpha: [key, keyword, string, enum]
+sort key get item_* alpha store dest: [key, keyword, string, enum, keyword, key]
+sort key get item_* store dest: [key, keyword, string, keyword, key]
+sort key asc: [key, enum]
+sort key asc alpha: [key, enum, enum]
+sort key asc alpha store dest: [key, enum, enum, keyword, key]
+sort key asc store dest: [key, enum, keyword, key]
+sort key desc: [key, enum]
+sort key desc alpha: [key, enum, enum]
+sort key desc alpha store dest: [key, enum, enum, keyword, key]
+sort key desc store dest: [key, enum, keyword, key]
+sort key alpha: [key, enum]
+sort key alpha store dest: [key, enum, keyword, key]
+sort key store dest: [key, keyword, key]
+
+spop key: [key]
+spop key 10: [key, integer]
+
+srandmember key: [key]
+srandmember key 10: [key, integer]
+
+srem key name: [key, string]
+srem key name1 name2 name3: [key, string, string, string]
+
+strlen key: [key]
+
+subscribe chan: [string]
+subscribe chan1 chan2 chan3: [string, string, string]
+
+sunion key: [key]
+sunion k1 k2 k3: [key, key, key]
+
+sunionstore desc key: [key, key]
+sunionstore desc k1 k2 k3: [key, key, key, key]
+
+sync: []
+
+time: []
+
+ttl key: [key]
+
+type key: [key]
+
+unsubscribe: []
+unsubscribe chan: [string]
+unsubscribe chan1 chan2 chan3: [string, string, string]
+
+unwatch: []
+
+watch key: [key]
+watch k1 k2 k3: [key, key, key]
+
+zadd key 10 item: [key, double, string]
+zadd key 10 item 20 other 30 thing: [key, double, string, double, string, double, string]
+
+zcard key: [key]
+
+zcount key 1 2: [key, double, double]
+
+zincrby key 5 item: [key, integer, string]
+
+zinterstore dest 1 k1: [key, integer, key]
+zinterstore dest 1 k1 aggregate sum: [key, integer, key, keyword, enum]
+zinterstore dest 3 k1 k2 k3: [key, integer, key, key, key]
+zinterstore dest 1 k1 weights 1: [key, integer, key, keyword, integer]
+zinterstore dest 3 k1 k2 k3 weights 1 2 3: [key, integer, key, key, key, keyword, integer, integer, integer]
+
+zlexcount key a z: [key, string, string]
+
+zrange key 1 5: [key, integer, integer]
+zrange key 1 5 withscores: [key, integer, integer, enum]
+
+zrangebylex key a b: [key, string, string]
+zrangebylex key a b limit 2 3: [key, string, string, keyword, integer, integer]
+
+zrevrangebylex key a b: [key, string, string]
+zrevrangebylex key a b limit 2 3: [key, string, string, keyword, integer, integer]
+
+zrangebyscore key 1 5: [key, double, double]
+zrangebyscore key 1 5 withscores: [key, double, double, enum]
+zrangebyscore key 1 5 withscores limit 2 3: [key, double, double, enum, keyword, integer, integer]
+zrangebyscore key 1 5 limit 2 3: [key, double, double, keyword, integer, integer]
+
+zrank key item: [key, string]
+
+zrem key i1: [key, string]
+zrem key i1 i2 i3: [key, string, string, string]
+
+zremrangebylex key a z: [key, string, string]
+
+zremrangebyrank key 1 10: [key, integer, integer]
+
+zremrangebyscore key 1 10: [key, double, double]
+
+zrevrange key 0 10: [key, integer, integer]
+zrevrange key 0 10 withscores: [key, integer, integer, enum]
+
+zrevrangebyscore key 10 0: [key, double, double]
+zrevrangebyscore key 10 0 withscores: [key, double, double, enum]
+zrevrangebyscore key 10 0 limit 0 5: [key, double, double, keyword, integer, integer]
+zrevrangebyscore key 10 0 withscores limit 0 5: [key, double, double, enum, keyword, integer, integer]
+
+zrevrank key item: [key, string]
+
+zscore key item: [key, string]
+
+zunionstore dest 1 key: [key, integer, key]
+zunionstore dest 1 key weights 10: [key, integer, key, keyword, integer]
+zunionstore dest 1 key aggregate sum: [key, integer, key, keyword, enum]
+
+scan 0: [integer]
+scan 0 match patt_*: [integer, keyword, pattern]
+scan 0 count 5: [integer, keyword, integer]
+scan 0 match patt_* count 5: [integer, keyword, pattern, keyword, integer]
+
+script-exists s: [string]
+script-exists s1 s2 s3: [string, string, string]
+
+script-flush: []
+
+script-kill: []
+
+script-load s1: [string]
+
+sscan key 0: [key, integer]
+sscan key 0 match patt_*: [key, integer, keyword, pattern]
+sscan key 0 count 5: [key, integer, keyword, integer]
+sscan key 0 match patt_* count 5: [key, integer, keyword, pattern, keyword, integer]
+
+hscan key 0: [key, integer]
+hscan key 0 match patt_*: [key, integer, keyword, pattern]
+hscan key 0 count 5: [key, integer, keyword, integer]
+hscan key 0 match patt_* count 5: [key, integer, keyword, pattern, keyword, integer]
+
+zscan key 0: [key, integer]
+zscan key 0 match patt_*: [key, integer, keyword, pattern]
+zscan key 0 count 5: [key, integer, keyword, integer]
+zscan key 0 match patt_* count 5: [key, integer, keyword, pattern, keyword, integer]
