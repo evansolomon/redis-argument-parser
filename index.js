@@ -79,9 +79,6 @@ RedisCommand.prototype.findNextChunk = function (remainingInputs, minSignatureIn
   // Required args after multiple args
   var remainingRequiredArgsCount = remainingRequiredArgs.reduce(function (memo, arg) {
     memo += arg.desc.count
-    if (arg.desc.command) {
-      memo++
-    }
     return memo
   }, 0)
   if (remainingRequiredArgsCount > remainingInputs.length) {
@@ -149,6 +146,11 @@ function ArgumentSignature(props) {
     variadic: !! this.props.variadic,
     type: [].concat(this.props.type)
   }
+
+  // Add 1 for command keyword
+  if (this.desc.command) {
+    this.desc.count++
+  }
 }
 
 ArgumentSignature.extraTypes = {
@@ -187,7 +189,7 @@ ArgumentSignature.prototype.test = function (inputs, variadicCount) {
 ArgumentSignature.prototype.isCommand = function (inputs) {
   // The first part of a command-style input must match the command's keyword
   // Require one more input than the spec to allow for the command's keyword
-  return inputs[0].toString().toUpperCase() === this.props.command && inputs.length >= this.desc.count + 1
+  return inputs[0].toString().toUpperCase() === this.props.command && inputs.length >= this.desc.count
 }
 
 ArgumentSignature.prototype.isEnum = function (inputs) {
