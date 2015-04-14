@@ -20,3 +20,10 @@ Object.keys(commands).forEach(function (key) {
     test.done()
   }
 })
+
+exports.unknownCommand = function (test) {
+  test.expect(1)
+  var commandParser = new parser.RedisCommand('FAKE')
+  test.deepEqual(commandParser.parseInputs(['foo', 'bar']), [undefined, undefined])
+  test.done()
+}
