@@ -36,6 +36,12 @@ client-kill id 10: [keyword, integer]
 client-kill id 10 type slave: [keyword, integer, keyword, enum]
 client-kill id 10 type normal addr a: [keyword, integer, keyword, enum, keyword, string]
 client-kill id 10 type normal addr a skipme no: [keyword, integer, keyword, enum, keyword, string, keyword, string]
+client-kill type slave: [keyword, enum]
+client-kill type normal addr a: [keyword, enum, keyword, string]
+client-kill type normal addr a skipme no: [keyword, enum, keyword, string, keyword, string]
+client-kill addr a: [keyword, string]
+client-kill addr a skipme no: [keyword, string, keyword, string]
+client-kill skipme no: [keyword, string]
 
 client-list: []
 

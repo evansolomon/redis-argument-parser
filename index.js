@@ -76,12 +76,6 @@ RedisCommand.prototype.findNextChunk = function (remainingInputs, minSignatureIn
     return ! signature.desc.optional
   })
 
-  var remainingCommandArgs = remainingSignatures.filter(function (signature) {
-    return signature.desc.command
-  })
-
-
-
   // Required args after multiple args
   var remainingRequiredArgsCount = remainingRequiredArgs.reduce(function (memo, arg) {
     memo += arg.desc.count
@@ -97,7 +91,19 @@ RedisCommand.prototype.findNextChunk = function (remainingInputs, minSignatureIn
   for (; i < this.signatures.length; i++) {
     if (! this.signatures[i].test(remainingInputs, variadicCount)) continue
 
-    // console.log(this.signatures[i])
+    // If this one is optional, see if we should actually match a later command argument
+    if (this.signatures[i].desc.optional && ! this.signatures[i].desc.command) {
+      var commandArgChunk
+      for (var ci = i; ci < this.signatures.length; ci++) {
+        if (! this.signatures[ci].desc.command) continue
+
+        if (! this.signatures[ci].test(remainingInputs, variadicCount)) continue
+
+        minSignatureIndex = ci
+        return this.findNextChunk(remainingInputs, minSignatureIndex, variadicCount)
+      }
+    }
+
     types = this.signatures[i].desc.type
 
     if (this.signatures[i].desc.command) {
