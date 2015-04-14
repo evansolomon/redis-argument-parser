@@ -6,15 +6,24 @@ var parser = require('../')
 var commands = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'commands.yaml')))
 
 Object.keys(commands).forEach(function (key) {
+  var args = key.split(' ')
+  // multi word commands
+  var command = args.shift().replace('-', ' ')
+  var expect = commands[key]
+
   exports[key] = function (test) {
     test.expect(1)
 
-    var args = key.split(' ')
-    // multi word commands
-    var command = args.shift().replace('-', ' ')
-    var expect = commands[key]
+    var commandParser = new parser.RedisCommand(command)
+    test.deepEqual(commandParser.parseInputs(args), expect)
 
-    var commandParser = new parser.RedisCommand(command, args)
+    test.done()
+  }
+
+  exports['↑ ' + key] = function (test) {
+    test.expect(1)
+
+    var commandParser = new parser.RedisCommand(command.toUpperCase())
     test.deepEqual(commandParser.parseInputs(args), expect)
 
     test.done()
