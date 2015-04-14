@@ -80,9 +80,18 @@ RedisCommand.prototype.findNextChunk = function (remainingInputs, minSignatureIn
     return signature.desc.command
   })
 
+
+
   // Required args after multiple args
-  if (remainingRequiredArgs.length > remainingInputs.length) {
-    i++
+  var remainingRequiredArgsCount = remainingRequiredArgs.reduce(function (memo, arg) {
+    memo += arg.desc.count
+    if (arg.desc.command) {
+      memo++
+    }
+    return memo
+  }, 0)
+  if (remainingRequiredArgsCount > remainingInputs.length) {
+    i = i + remainingRequiredArgsCount - remainingInputs.length
   }
 
   for (; i < this.signatures.length; i++) {
